@@ -1,0 +1,14 @@
+
+numpy<2.0
+torch
+torchvision
+pytorch-lightning
+omegaconf
+einops
+transformers
+kornia
+imgaug
+ninja
+tqdm
+Pillow
+diffusers
