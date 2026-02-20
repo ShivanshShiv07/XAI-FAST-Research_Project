@@ -1,0 +1,20 @@
+{
+    "exp_base_dir": "results/experiment_real",
+    "anomaly_maps_dirs": {
+        "bottle": "anomaly_maps",
+        "cable": "anomaly_maps",
+        "capsule": "anomaly_maps",
+        "carpet": "anomaly_maps",
+        "grid": "anomaly_maps",
+        "hazelnut": "anomaly_maps",
+        "leather": "anomaly_maps",
+        "metal_nut": "anomaly_maps",
+        "pill": "anomaly_maps",
+        "screw": "anomaly_maps",
+        "tile": "anomaly_maps",
+        "toothbrush": "anomaly_maps",
+        "transistor": "anomaly_maps",
+        "wood": "anomaly_maps",
+        "zipper": "anomaly_maps"
+    }
+}

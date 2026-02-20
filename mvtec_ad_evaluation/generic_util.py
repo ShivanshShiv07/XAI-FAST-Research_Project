@@ -98,6 +98,14 @@ def read_tiff(file_path_no_ext, exts=('.tif', '.tiff', '.TIF', '.TIFF')):
         if os.path.exists(file_path):
             file_paths.append(file_path)
 
+    # Deduplicate using os.path.samefile
+    if len(file_paths) > 0:
+        unique_paths = [file_paths[0]]
+        for p in file_paths[1:]:
+            if not any(os.path.samefile(p, up) for up in unique_paths):
+                unique_paths.append(p)
+        file_paths = unique_paths
+
     if len(file_paths) == 0:
         raise FileNotFoundError('Could not find a file with a TIFF extension'
                                 f' at {file_path_no_ext}')

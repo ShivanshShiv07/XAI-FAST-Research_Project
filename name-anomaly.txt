@@ -1,0 +1,9 @@
+anomaly
+defect
+crack
+scratch
+strain
+hole
+metal_contamination
+color
+mnaual

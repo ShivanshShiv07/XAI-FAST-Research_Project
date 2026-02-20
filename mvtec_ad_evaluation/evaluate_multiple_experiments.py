@@ -10,6 +10,7 @@ __copyright__ = "2021, MVTec Software GmbH"
 import argparse
 import json
 import subprocess
+import sys
 from os import path
 
 
@@ -50,6 +51,11 @@ def parse_user_arguments():
                                 the PRO curve. Must lie within the interval
                                 of (0.0, 1.0].""")
 
+    parser.add_argument('--evaluated_objects',
+                        nargs='+',
+                        help="""List of objects to be evaluated. By default,
+                                all dataset objects will be evaluated.""")
+
     return parser.parse_args()
 
 
@@ -72,11 +78,15 @@ def main():
             experiment_configs['anomaly_maps_dirs'][experiment_id])
 
         # Set up python call for the evaluation script.
-        call = ['python', 'evaluate_experiment.py',
+        script_dir = path.dirname(path.abspath(__file__))
+        call = [sys.executable, path.join(script_dir, 'evaluate_experiment.py'),
                 '--anomaly_maps_dir', anomaly_maps_dir,
                 '--dataset_base_dir', args.dataset_base_dir,
                 '--output_dir', path.join(args.output_dir, experiment_id),
                 '--pro_integration_limit', str(args.pro_integration_limit)]
+
+        if args.evaluated_objects:
+            call.extend(['--evaluated_objects'] + args.evaluated_objects)
 
         # Run evaluation script.
         if args.dry_run == 'False':

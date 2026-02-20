@@ -1,0 +1,6 @@
+{
+    "exp_base_dir": "../mock_results",
+    "anomaly_maps_dirs": {
+        "experiment_1": "experiment_1/anomaly_maps/"
+    }
+}

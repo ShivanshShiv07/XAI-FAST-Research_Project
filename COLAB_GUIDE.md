@@ -47,6 +47,33 @@ print(f"Current Directory: {os.getcwd()}")
 !python libs/fast_anomaly_synthesis/experiment_runner_real.py
 ```
 
+## Full Training (MVTec + BTAD)
+Full training is long and may take multiple Colab sessions. The script below is resumable; you can re-run it and it will continue where it stopped.
+
+### Cell A: Download MVTec (Full)
+```python
+!python libs/fast_anomaly_synthesis/download_mvtec_real.py
+```
+
+### Cell B: Download BTAD (Kaggle)
+```python
+!python libs/fast_anomaly_synthesis/download_btad_kaggle.py
+```
+
+### Cell C: Train Both Datasets (Sequential)
+```python
+!python libs/fast_anomaly_synthesis/train_all.py \
+  --dataset both \
+  --gpus "0," \
+  --max_steps 80000 \
+  --batch_size 2
+```
+
+Tips:
+- Start with `--limit 2` to verify everything works.
+- If you run out of time, just re-run the same command to resume.
+- If you hit GPU OOM, reduce `--batch_size`.
+
 ## Step 5: Check Results
 Once finished, go to your Google Drive folder (`MiroThinker/results`) to see:
 - `figure_3_comparison.png`
